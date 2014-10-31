@@ -20,7 +20,7 @@
       'background: rgba(255, 255, 255, 0.75);' +
       'border-radius: 3px;' +
       'bottom: 0;' +
-      'color: #000' +
+      'color: #000;' +
       'font-size: 36px;' +
       'margin: 5px;' +
       'padding: 15px 20px;' +
