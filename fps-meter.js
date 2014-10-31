@@ -1,6 +1,7 @@
 (function () {
   function measureFrames(reportInterval, fpsCallback) {
-    var frames = 0;
+    var frames = 0,
+      framesToFill = 120;
 
     function frameCallback() {
       frames += 1;
@@ -26,12 +27,15 @@
       'padding: 15px 20px;' +
       'position: fixed;' +
       'right: 0;' +
+      'text-align: right;' +
       'z-index: 10000000;' +
+      '}' +
+      '#wikia-fps-chart {' +
+      'margin-top: 10px;' +
       '}' +
       '#wikia-fps-chart span {' +
       'background: #000;' +
       'display: inline-block;' +
-      'text-align: right;' +
       'width: 2px;' +
       '}',
     fpsMeterDiv,
@@ -46,5 +50,10 @@
   measureFrames(1000, function (frames) {
     fpsMeterDiv.innerHTML = frames + ' fps';
     fpsChartDiv.insertAdjacentHTML('beforeend', '<span style="height: ' + frames + 'px"></span>');
+    if (framesToFill === 0) {
+      fpsChartDiv.querySelector('span').remove();
+    } else {
+      framesToFill -= 1;
+    }
   });
 }());
