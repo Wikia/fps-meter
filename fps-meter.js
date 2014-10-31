@@ -27,15 +27,24 @@
       'position: fixed;' +
       'right: 0;' +
       'z-index: 10000000;' +
+      '}' +
+      '#wikia-fps-chart span {' +
+      'background: #000;' +
+      'display: inline-block;' +
+      'text-align: right;' +
+      'width: 2px;' +
       '}',
-    fpsMeterDiv;
+    fpsMeterDiv,
+    fpsChartDiv;
 
   document.body.insertAdjacentHTML('beforeend', '<style>' + style + '</style>');
-  document.body.insertAdjacentHTML('beforeend', '<div id="wikia-fps-meter"></div>');
-
-  fpsMeterDiv = document.getElementById('wikia-fps-meter');
+  document.body.insertAdjacentHTML('beforeend', '<div id="wikia-fps-meter"><span></span></div>');
+  fpsMeterDiv = document.querySelector('#wikia-fps-meter > span');
+  fpsMeterDiv.insertAdjacentHTML('afterend', '<div id="wikia-fps-chart"></div>');
+  fpsChartDiv = document.querySelector('#wikia-fps-chart');
 
   measureFrames(1000, function (frames) {
     fpsMeterDiv.innerHTML = frames + ' fps';
+    fpsChartDiv.insertAdjacentHTML('beforeend', '<span style="height: ' + frames + 'px"></span>');
   });
 }());
