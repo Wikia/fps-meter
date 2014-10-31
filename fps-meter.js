@@ -1,7 +1,6 @@
 (function () {
   function measureFrames(reportInterval, fpsCallback) {
-    var frames = 0,
-      framesToFill = 120;
+    var frames = 0;
 
     function frameCallback() {
       frames += 1;
@@ -39,12 +38,14 @@
       'width: 2px;' +
       '}',
     fpsMeterDiv,
-    fpsChartDiv;
+    fpsChartDiv,
+    framesToFill = 120,
+    boxWidth = 2 * framesToFill;
 
   document.body.insertAdjacentHTML('beforeend', '<style>' + style + '</style>');
   document.body.insertAdjacentHTML('beforeend', '<div id="wikia-fps-meter"><span></span></div>');
   fpsMeterDiv = document.querySelector('#wikia-fps-meter > span');
-  fpsMeterDiv.insertAdjacentHTML('afterend', '<div id="wikia-fps-chart"></div>');
+  fpsMeterDiv.insertAdjacentHTML('afterend', '<div id="wikia-fps-chart" style="width: ' + boxWidth + 'px"></div>');
   fpsChartDiv = document.querySelector('#wikia-fps-chart');
 
   measureFrames(1000, function (frames) {
