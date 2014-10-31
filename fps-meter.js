@@ -18,11 +18,12 @@
 
   var style = '#wikia-fps-meter {' +
       'background: rgba(255, 255, 255, 0.75);' +
-      'border-radius: 5px;' +
+      'border-radius: 3px;' +
       'bottom: 0;' +
-      'font-size: 30px;' +
+      'color: #000' +
+      'font-size: 36px;' +
       'margin: 5px;' +
-      'padding: 3px 10px;' +
+      'padding: 15px 20px;' +
       'position: fixed;' +
       'right: 0;' +
       'z-index: 10000000;' +
@@ -35,6 +36,6 @@
   fpsMeterDiv = document.getElementById('wikia-fps-meter');
 
   measureFrames(1000, function (frames) {
-    fpsMeterDiv.innerHTML = frames + ' FPS';
+    fpsMeterDiv.innerHTML = frames + ' fps';
   });
 }());
